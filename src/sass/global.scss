@@ -1,4 +1,4 @@
-@use "../sass/index.scss" as *;
+@use "./index.scss" as *;
 
 * {
   margin: 0;
@@ -13,6 +13,14 @@ body {
     "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header */
+.header-container {
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 100%;
+  max-width: var(--width-lg);
 }
 
 ::-webkit-scrollbar {
@@ -37,293 +45,25 @@ body {
   outline-offset: 2px;
 }
 
-.input {
-  width: $width-mx;
-  font-size: 14px;
-  font-family: $family;
-  font-weight: 400;
-  line-height: 21px;
-  color: $secondary-color;
-  background-color: $text-white;
-  border: 1px solid #e1dfe1;
-  border-radius: 8px;
-  padding: 10px 12px;
-  transition: border-color $transition, box-shadow $transition;
-  outline: $none;
-}
-
-.input:focus {
-  border-color: #f97316;
-  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.25);
-}
-
-.input:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.btn {
-  display: inline-flex;
-  @include flex(center, center);
-  font-size: 14px;
-  font-family: $family;
-  font-weight: $weight;
-  line-height: 21px;
-  border: none;
-  border-radius: 10px;
-  padding: 12px 16px;
-  cursor: $pointer;
-  transition: opacity 200ms ease, transform 100ms ease;
-}
-
-.btn:active {
-  transform: translateY(0.5px);
-}
-
-.btn-primary {
-  color: $text-white;
-  background-color: $primary-color;
-}
-
-.btn-block {
-  width: $width-mx;
-}
-
-/* ===== Merged Tailwind-like utilities and page classes (pure CSS) ===== */
-
-/* CSS variables used across pages */
-:root {
-  --text-primary: #10151f;
-  --text-secondary: #3e424a;
-  --text-accent: #ff3f00;
-  --text-white: #ffffff;
-  --bg-white: #ffffff;
-  --width-xs: 20px;
-  --width-md: 180px;
-  --width-lg: 1720px;
-  --width-42: 42%;
-  --width-48: 48%;
-  --width-68: 68%;
-}
-
-/* Small utility classes needed by pages */
-.w-full {
-  width: 100%;
-}
-.h-full {
-  height: 100%;
-}
-.relative {
-  position: relative;
-}
-.text-center {
-  text-align: center;
-}
-.object-cover {
-  object-fit: cover;
-}
-
-/* Header */
-.header-container {
-  padding-left: 50px;
-  padding-right: 50px;
-  width: 100%;
-  max-width: var(--width-lg);
-  margin: 0 auto;
-}
-.header-logo {
-  width: 120px;
-  height: auto;
-}
-.header-user-icon {
-  width: var(--width-xs);
-  height: var(--width-xs);
-}
-
-/* Page layout */
-.page-main {
-  width: 100%;
-  background-color: var(--bg-white);
-  min-height: 100vh;
-}
-.page-section {
-  width: 100%;
-}
-.layout-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
-  width: 100%;
-  min-height: calc(100vh - 80px);
-}
-.image-section {
-  width: 100%;
-  order: 2;
-}
-.form-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 2rem 1rem;
-  order: 1;
-}
-.form-content {
-  width: 100%;
-  max-width: 554px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-.page-title {
-  font-size: 1.75rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  line-height: 1.2;
-  text-align: left;
-  color: var(--text-primary);
-}
-.form-fields {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-}
-.form-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-}
-
 /* Links below forms */
-.auth-link-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-}
 .auth-link-text {
   font-size: 14px;
-  font-family: "Poppins", sans-serif;
+  font-family: $family;
   font-weight: 400;
   line-height: 21px;
   text-align: center;
-  color: #3e424a;
+  color: $secondary-color;
 }
 .auth-link {
   font-size: 14px;
-  font-family: "Poppins", sans-serif;
+  font-family: $family;
   font-weight: 500;
   line-height: 21px;
   text-align: center;
-  color: #ff3f00;
-  text-decoration: none;
+  color: $primary-color;
+  text-decoration: $none;
   transition: opacity 0.2s ease;
-}
-.auth-link:hover {
-  opacity: 0.8;
-}
-
-/* Password toggle button */
-.toggle-password-button {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: var(--width-xs);
-  height: var(--width-xs);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Login page specific wrappers */
-.login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  min-height: 100vh;
-  background-color: var(--bg-white);
-}
-.login-main-content {
-  width: 100%;
-  flex: 1;
-}
-.login-layout {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-}
-.login-image-section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  order: 2;
-}
-.login-form-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 2rem 1rem;
-  order: 1;
-}
-.login-form-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 28rem;
-  margin: 0 auto;
-}
-
-/* Large screens (switch to two columns) */
-@media (min-width: 1024px) {
-  .layout-container {
-    flex-direction: row;
-  }
-  .image-section {
-    width: var(--width-48);
-    order: 1;
-  }
-  .form-section {
-    width: var(--width-42);
-    padding: 240px 0;
-    order: 2;
-  }
-  .form-content {
-    margin-left: 121px;
-    margin-right: 0;
-  }
-
-  .login-layout {
-    flex-direction: row;
-  }
-  .login-image-section {
-    width: var(--width-48);
-    order: 1;
-  }
-  .login-form-section {
-    width: var(--width-42);
-    padding: 240px 0;
-    order: 2;
-  }
-  .login-form-content {
-    width: var(--width-68);
-    margin: 0;
+  .auth-link:hover {
+    opacity: 0.8;
   }
 }

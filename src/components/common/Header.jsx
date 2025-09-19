@@ -20,10 +20,10 @@ const Header = ({ className = '', ...props }) => {
                             src="/images/img_header_logo.png"
                             alt="RedSeam Clothing Logo"
                             className="header-logo"
+                            style={{ width: "300px" }}
                         />
                     </div>
 
-                    {/* Login Section */}
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8px' }}>
                         <img
                             src="/images/img_heroicons_mini_users.svg"
@@ -34,12 +34,13 @@ const Header = ({ className = '', ...props }) => {
                         <span
                             className="hidden"
                             style={{
-                                fontSize: '12px',
-                                fontFamily: 'Poppins',
+                                fontSize: '25px',
+                                fontFamily: 'Poppins, sans-serif',
                                 fontWeight: '500',
                                 lineHeight: '18px',
                                 textAlign: 'left',
-                                color: '#10151f'
+                                color: '#10151f',
+                                cursor: "pointer"
                             }}
                         >
                             Log in

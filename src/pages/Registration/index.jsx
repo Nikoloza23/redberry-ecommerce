@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/common/Header';
-
+import '../../sass/pages/_registration.scss'
 
 const Registration = () => {
     const [formData, setFormData] = useState({
@@ -53,14 +52,8 @@ const Registration = () => {
 
     return (
         <>
-            <Helmet>
-                <title>Create Account | RedSeam Clothing - Join Premium Fashion Community</title>
-                <meta name="description" content="Join RedSeam Clothing today! Create your account to access exclusive fashion collections, personalized recommendations, and premium shopping experience. Quick & secure registration process." />
-                <meta property="og:title" content="Create Account | RedSeam Clothing - Join Premium Fashion Community" />
-                <meta property="og:description" content="Join RedSeam Clothing today! Create your account to access exclusive fashion collections, personalized recommendations, and premium shopping experience. Quick & secure registration process." />
-            </Helmet>
+
             <main className="page-main">
-                {/* Header */}
                 <Header />
 
                 {/* Main Content */}
@@ -79,19 +72,16 @@ const Registration = () => {
                             />
                         </div>
 
-                        {/* Right Registration Form Section */}
+
                         <div className="form-section">
                             <div className="form-content">
-                                {/* Page Title */}
                                 <h1 className="page-title">
                                     Registration
                                 </h1>
 
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%' }}>
-                                    {/* Profile Image Upload Section */}
                                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '1rem', width: '100%' }}>
-                                        {/* Profile Image */}
-                                        <div className="relative flex-shrink-0">
+                                        <>
                                             <div className="profile-image-container">
                                                 {profileImage ? (
                                                     <img
@@ -114,9 +104,8 @@ const Registration = () => {
                                                 className="file-input-overlay"
                                                 aria-label="Upload profile image"
                                             />
-                                        </div>
+                                        </>
 
-                                        {/* Upload Controls */}
                                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '0.75rem', padding: '0 14px', width: '100%' }}>
                                             <button
                                                 type="button"
@@ -158,13 +147,10 @@ const Registration = () => {
                                         </div>
                                     </div>
 
-                                    {/* Registration Form */}
                                     <div className="form-container">
                                         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                                            {/* Form Fields */}
                                             <div className="form-fields">
-                                                {/* Username Field */}
-                                                <div className="w-full">
+                                                <div>
                                                     <input
                                                         className="input"
                                                         name="username"
@@ -177,8 +163,7 @@ const Registration = () => {
                                                     />
                                                 </div>
 
-                                                {/* Email Field */}
-                                                <div className="w-full">
+                                                <div>
                                                     <input
                                                         className="input"
                                                         name="email"
@@ -193,7 +178,7 @@ const Registration = () => {
                                                 </div>
 
                                                 {/* Password Field */}
-                                                <div className="w-full relative">
+                                                <div>
                                                     <input
                                                         className="input"
                                                         name="password"
@@ -226,7 +211,7 @@ const Registration = () => {
                                                 </div>
 
                                                 {/* Confirm Password Field */}
-                                                <div className="w-full relative">
+                                                <div>
                                                     <input
                                                         className="input"
                                                         name="confirmPassword"
@@ -259,9 +244,7 @@ const Registration = () => {
                                                 </div>
                                             </div>
 
-                                            {/* Submit Button and Login Link */}
                                             <div className="form-actions">
-                                                {/* Register Button */}
                                                 <button
                                                     type="submit"
                                                     className="btn btn-primary btn-block"
@@ -270,7 +253,6 @@ const Registration = () => {
                                                     Register
                                                 </button>
 
-                                                {/* Login Link */}
                                                 <div className="auth-link-container">
                                                     <span className="auth-link-text">
                                                         Already member?

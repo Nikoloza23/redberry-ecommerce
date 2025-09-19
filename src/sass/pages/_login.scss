@@ -1,76 +1,103 @@
+@use "../index.scss" as *;
+
+/* Password toggle button */
+.toggle-password-button {
+  position: $abs;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  @include flex(center, center);
+}
+
 /* Login page specific wrappers */
 .login-container {
-  display: flex;
+  @include flex(center, flex-start);
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  min-height: 100vh;
   background-color: var(--bg-white);
-}
-
-.login-main-content {
-  width: 100%;
-  flex: 1;
-}
-
-.login-layout {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.login-image-section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  order: 2;
-  padding: 16px;
-}
-
-.login-form-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 24px 16px;
-  order: 1;
-}
-
-.login-form-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 554px;
-  margin: 0 auto;
-}
-
-@media (min-width: 1024px) {
-  .login-layout {
-    flex-direction: row;
-    align-items: stretch;
-  }
-  .login-image-section {
-    width: var(--width-48);
-    order: 1;
-    padding: 0;
+  .login-main-content {
+    width: $width-mx;
+    flex: 1;
+    .login-layout {
+      @include flex(flex-start, "");
+      width: $width-mx;
+    }
   }
   .login-form-section {
-    width: var(--width-42);
-    padding: 152px 0;
+    margin-left: 250px;
     order: 2;
+    margin-top: 350px;
+
+    .login-form-content {
+      margin: 20px;
+    }
   }
-  .login-form-content {
-    width: var(--width-68);
-    margin: 0;
+}
+
+.password-wrapper {
+  position: relative;
+  .toggle-password-button {
+    position: $abs;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    background: $none;
+    border: $none;
+    cursor: $pointer;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
   }
+}
+
+.input {
+  width: $width-mx;
+  font-size: 24px;
+  font-family: $family;
+  font-weight: 400;
+  line-height: 21px;
+  color: $secondary-color;
+  background-color: $text-white;
+  border: 1px solid #e1dfe1;
+  border-radius: 8px;
+  padding: 20px 12px;
+  transition: border-color $transition, box-shadow $transition;
+  outline: $none;
+}
+
+.input:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.25);
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn {
+  display: inline-flex;
+  @include flex(center, center);
+  font-size: 14px;
+  font-family: $family;
+  font-weight: $weight;
+  line-height: 21px;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  cursor: $pointer;
+  transition: opacity 200ms ease, transform 100ms ease;
+}
+:active {
+  transform: translateY(0.5px);
+}
+
+.btn-primary {
+  color: $text-white;
+  background-color: $primary-color;
+}
+
+.btn-block {
+  width: $width-mx;
 }
