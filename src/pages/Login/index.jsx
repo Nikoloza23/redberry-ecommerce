@@ -1,27 +1,49 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import Header from '../../components/common/Header';
 import '../../sass/pages/_login.scss'
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState('');
 
-    const handleEmailChange = (event) => {
-        setEmail(event?.target?.value);
-    };
-
-    const handlePasswordChange = (event) => {
-        setPassword(event?.target?.value);
-    };
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm();
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
     };
 
-    const handleLogin = () => {
-        // Login logic would go here
+    const onSubmit = async (data) => {
+        setIsSubmitting(true);
+        setError('');
+
+        try {
+            const response = await axios.post(
+                'https://api.redseam.redberryinternship.ge/login',
+                {
+                    email: data.email,
+                    password: data.password
+                }
+            );
+
+            if (response.status === 200) {
+                // Store token if needed
+                localStorage.setItem('token', response.data.token);
+                navigate('/'); // Redirect to main page
+            }
+        } catch (err) {
+            setError(err.response?.data?.message || 'ავტორიზაცია ვერ მოხერხდა');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -53,24 +75,46 @@ const Login = () => {
                                 Log in
                             </h1>
 
-                            < >
+                            {error && (
+                                <div style={{
+                                    color: '#ff3f00',
+                                    marginBottom: '20px',
+                                    fontSize: '18px',
+                                    textAlign: 'center'
+                                }}>
+                                    {error}
+                                </div>
+                            )}
+
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', justifyContent: 'flex-start', alignItems: 'center', width: '100%' }}>
                                     <input
                                         className="input"
                                         placeholder="Email"
                                         type="email"
-                                        value={email}
-                                        onChange={handleEmailChange}
+                                        {...register('email', {
+                                            required: 'Email აუცილებელია',
+                                            pattern: {
+                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                message: 'არასწორი email ფორმატი'
+                                            }
+                                        })}
                                     />
+                                    {errors.email && (
+                                        <span style={{ color: '#ff3f00', fontSize: '16px' }}>
+                                            {errors.email.message}
+                                        </span>
+                                    )}
 
                                     <div>
                                         <input
                                             className="input"
                                             placeholder="Password"
                                             type={showPassword ? "text" : "password"}
-                                            value={password}
-                                            onChange={handlePasswordChange}
                                             style={{ paddingRight: '40px' }}
+                                            {...register('password', {
+                                                required: 'Password აუცილებელია'
+                                            })}
                                         />
                                         <button
                                             type="button"
@@ -90,15 +134,20 @@ const Login = () => {
                                             />
                                         </button>
                                     </div>
+                                    {errors.password && (
+                                        <span style={{ color: '#ff3f00', fontSize: '16px' }}>
+                                            {errors.password.message}
+                                        </span>
+                                    )}
                                 </div>
 
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', justifyContent: 'flex-start', alignItems: 'center', width: '100%' }}>
                                     <button
                                         className="btn btn-primary btn-block"
-                                        onClick={handleLogin}
-                                        type="button"
+                                        type="submit"
+                                        disabled={isSubmitting}
                                     >
-                                        Log in
+                                        {isSubmitting ? 'ავტორიზაცია...' : 'Log in'}
                                     </button>
 
                                     <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', justifyContent: 'center', alignItems: 'center', width: 'auto' }}>
@@ -113,7 +162,7 @@ const Login = () => {
                                         </Link>
                                     </div>
                                 </div>
-                            </>
+                            </form>
                         </div>
                     </div>
                 </div>

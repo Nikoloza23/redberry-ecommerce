@@ -150,12 +150,18 @@
   color: $text-white;
   background-color: $primary-color;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: $style-color;
   }
 
-  &:active {
+  &:active:not(:disabled) {
     background-color: #cc3600;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
   }
 }
 
@@ -219,4 +225,19 @@
 .auth-link:hover {
   text-decoration: underline;
   color: $style-color;
+}
+
+/* Error message styles */
+.error-message {
+  color: #ff3f00;
+  font-size: 16px;
+  margin-top: 8px;
+  display: block;
+}
+
+.form-error {
+  color: #ff3f00;
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-align: center;
 }
