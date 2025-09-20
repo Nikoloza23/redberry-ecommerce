@@ -52,34 +52,35 @@ const Registration = () => {
 
     return (
         <>
-
-            <main className="page-main">
+            <main className="registration-container">
                 <Header />
-
-                {/* Main Content */}
-                <section className="page-section">
-                    <div className="layout-container">
-                        {/* Left Image Section */}
-                        <div className="image-section">
+                <section className="registration-main-content">
+                    <div className="registration-layout">
+                        <div className="registration-image-section">
                             <img
                                 src="/images/img_rectangle_10.png"
-                                alt="Fashion models wearing RedSeam clothing in outdoor setting"
-                                style={{
-                                    width: '100%',
-                                    height: '300px',
-                                    objectFit: 'cover'
-                                }}
+                                alt="RedSeam Clothing Fashion Models"
                             />
                         </div>
 
-
-                        <div className="form-section">
-                            <div className="form-content">
-                                <h1 className="page-title">
+                        <div className="registration-form-section">
+                            <div className="registration-form-content">
+                                <h1
+                                    style={{
+                                        fontSize: '72px',
+                                        fontFamily: 'Poppins, sans-serif',
+                                        fontWeight: '600',
+                                        lineHeight: '73px',
+                                        color: '#10151f',
+                                        marginBottom: "40px",
+                                        textAlign: 'left',
+                                        cursor: 'pointer',
+                                    }}
+                                >
                                     Registration
                                 </h1>
 
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', width: '100%' }}>
                                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '1rem', width: '100%' }}>
                                         <>
                                             <div className="profile-image-container">
@@ -112,10 +113,10 @@ const Registration = () => {
                                                 onClick={() => document.querySelector('input[type="file"]')?.click()}
                                                 className="transition-colors"
                                                 style={{
-                                                    fontSize: '14px',
+                                                    fontSize: '20px',
                                                     fontFamily: 'Poppins',
                                                     fontWeight: '400',
-                                                    lineHeight: '21px',
+                                                    lineHeight: '28px',
                                                     textAlign: 'center',
                                                     color: '#3e424a',
                                                     background: 'none',
@@ -130,10 +131,10 @@ const Registration = () => {
                                                 onClick={removeImage}
                                                 className="transition-colors"
                                                 style={{
-                                                    fontSize: '14px',
+                                                    fontSize: '20px',
                                                     fontFamily: 'Poppins',
                                                     fontWeight: '400',
-                                                    lineHeight: '21px',
+                                                    lineHeight: '28px',
                                                     textAlign: 'center',
                                                     color: '#3e424a',
                                                     background: 'none',
@@ -148,7 +149,7 @@ const Registration = () => {
                                     </div>
 
                                     <div className="form-container">
-                                        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                                        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
                                             <div className="form-fields">
                                                 <div>
                                                     <input
@@ -178,7 +179,7 @@ const Registration = () => {
                                                 </div>
 
                                                 {/* Password Field */}
-                                                <div>
+                                                <div className="password-wrapper">
                                                     <input
                                                         className="input"
                                                         name="password"
@@ -189,29 +190,23 @@ const Registration = () => {
                                                         required
                                                         id="password"
                                                         autoComplete="new-password"
-                                                        style={{ paddingRight: '40px' }}
+                                                        style={{ paddingRight: '70px' }}
                                                     />
                                                     <button
                                                         type="button"
                                                         onClick={togglePasswordVisibility}
                                                         className="toggle-password-button"
                                                         aria-label={showPassword ? "Hide password" : "Show password"}
-                                                        style={{
-                                                            background: 'none',
-                                                            border: 'none',
-                                                            cursor: 'pointer'
-                                                        }}
                                                     >
                                                         <img
                                                             src="/images/img_search.svg"
                                                             alt="Toggle password visibility"
-                                                            style={{ width: '20px', height: '20px' }}
                                                         />
                                                     </button>
                                                 </div>
 
                                                 {/* Confirm Password Field */}
-                                                <div>
+                                                <div className="password-wrapper">
                                                     <input
                                                         className="input"
                                                         name="confirmPassword"
@@ -222,23 +217,17 @@ const Registration = () => {
                                                         required
                                                         id="confirmPassword"
                                                         autoComplete="new-password"
-                                                        style={{ paddingRight: '40px' }}
+                                                        style={{ paddingRight: '70px' }}
                                                     />
                                                     <button
                                                         type="button"
                                                         onClick={toggleConfirmPasswordVisibility}
                                                         className="toggle-password-button"
                                                         aria-label={showConfirmPassword ? "Hide password" : "Show password"}
-                                                        style={{
-                                                            background: 'none',
-                                                            border: 'none',
-                                                            cursor: 'pointer'
-                                                        }}
                                                     >
                                                         <img
                                                             src="/images/img_search.svg"
                                                             alt="Toggle password visibility"
-                                                            style={{ width: '20px', height: '20px' }}
                                                         />
                                                     </button>
                                                 </div>

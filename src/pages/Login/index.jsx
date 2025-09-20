@@ -47,7 +47,7 @@ const Login = () => {
                                         fontWeight: '600',
                                         lineHeight: '63px',
                                         color: '#10151f',
-                                        marginBottom: "20px",
+                                        marginBottom: "40px",
                                         textAlign: 'left',
                                         cursor: 'pointer',
                                     }}

@@ -1,24 +1,222 @@
-.form-section {
-  width: 100%;
-  display: flex;
+@use "../index.scss" as *;
+
+/* Password toggle button */
+.toggle-password-button {
+  position: $abs;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  @include flex(center, center);
+}
+
+/* Registration page specific wrappers */
+.registration-container {
+  @include flex(center, flex-start);
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 2rem 1rem;
-  order: 1;
-  .form-content {
-    width: 100%;
-    max-width: 554px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  background-color: var(--bg-white);
+  .registration-main-content {
+    width: $width-mx;
+    flex: 1;
+    .registration-layout {
+      @include flex(flex-start, "");
+      width: $width-mx;
+    }
   }
-  .page-title {
-    font-size: 1.75rem;
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    line-height: 1.2;
-    text-align: left;
+  .registration-image-section {
+    order: 1;
+    flex: 1;
+    max-width: 50%;
+
+    img {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
   }
+  .registration-form-section {
+    margin-left: 250px;
+    order: 2;
+    margin-top: 350px;
+
+    .registration-form-content {
+      margin: 20px;
+    }
+  }
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+
+  .toggle-password-button {
+    position: $abs;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+    background: $none;
+    border: $none;
+    cursor: $pointer;
+    z-index: 2;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    img {
+      width: 28px;
+      height: 28px;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+    }
+
+    &:hover img {
+      opacity: 0.8;
+    }
+  }
+}
+
+.input {
+  width: $width-mx;
+  font-size: 28px;
+  font-family: $family;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $secondary-color;
+  background-color: $text-white;
+  border: 3px solid #e1dfe1;
+  border-radius: 16px;
+  padding: 28px 32px;
+  transition: all $transition;
+  outline: $none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  min-height: 80px;
+  margin-bottom: 24px;
+
+  &::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+    font-size: 28px;
+  }
+
+  &:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.input:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn {
+  display: inline-flex;
+  @include flex(center, center);
+  font-size: 28px;
+  font-family: $family;
+  font-weight: 600;
+  line-height: 1.5;
+  border: none;
+  border-radius: 16px;
+  padding: 24px 32px;
+  cursor: $pointer;
+  transition: all 200ms ease;
+  min-height: 80px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  margin-bottom: 32px;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.btn-primary {
+  color: $text-white;
+  background-color: $primary-color;
+
+  &:hover {
+    background-color: #e63900;
+  }
+
+  &:active {
+    background-color: #cc3600;
+  }
+}
+
+.btn-block {
+  width: $width-mx;
+}
+
+/* Profile image styles */
+.profile-image-container {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #e1dfe1;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #f97316;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+  }
+}
+
+.file-input-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.auth-link-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  margin-top: 16px;
+}
+
+.auth-link-text {
+  font-size: 24px;
+  font-family: $family;
+  color: $secondary-color;
+  font-weight: 400;
+}
+
+.auth-link {
+  font-size: 24px;
+  font-family: $family;
+  color: $primary-color;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+  color: #e63900;
 }
