@@ -11,24 +11,35 @@
 
 /* Login page specific wrappers */
 .login-container {
-  @include flex(center, flex-start);
+  display: flex;
   flex-direction: column;
   background-color: var(--bg-white);
+  min-height: 100vh;
+
   .login-main-content {
-    width: $width-mx;
+    display: flex;
+    flex-direction: row;
     flex: 1;
-    .login-layout {
-      @include flex(flex-start, "");
+  }
+  .login-image-section {
+    flex: 1;
+    height: calc(100vh);
+
+    img {
       width: $width-mx;
+      height: $width-mx;
+      object-fit: cover;
     }
   }
+
   .login-form-section {
-    margin-left: 250px;
-    order: 2;
-    margin-top: 350px;
+    flex: 1;
+    @include flex(center, center);
+    padding: 40px 20px;
 
     .login-form-content {
-      margin: 20px;
+      width: $width-mx;
+      max-width: 500px;
     }
   }
 }
@@ -79,7 +90,7 @@
 .btn {
   display: inline-flex;
   @include flex(center, center);
-  font-size: 14px;
+  font-size: 24px;
   font-family: $family;
   font-weight: $weight;
   line-height: 21px;
